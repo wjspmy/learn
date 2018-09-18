@@ -55,7 +55,7 @@ void Adjust(BSTreeNode* p) {
 void Print(BSTreeNode *pHead) { 
     if (pHead == NULL) {
     	return;
-	}
+    }
     BSTreeNode *t; 
     std::cout << "顺序遍历：" << std::endl; 
     while (pHead != NULL) { 
