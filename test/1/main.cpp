@@ -8,20 +8,21 @@
 #include <iostream>
 #include "1.h"
 
-Node* phead = NULL;
-Node* pindex = NULL;
 
 int main() {
     Node* p = NULL;
-    add(&p, 10);
-    add(&p, 6);
-    add(&p, 14);
-    add(&p, 4);
-    add(&p, 8);
-    add(&p, 12);
-    add(&p, 16);
-    adjust(p);
-    print_node(phead);
-    return 0;
+    Node* phead = NULL;
+    Node* pindex = NULL;
 
+    add(p, 10);
+    add(p, 6);
+    add(p, 14);
+    add(p, 4);
+    add(p, 8);
+    add(p, 12);
+    add(p, 16);
+    adjust(p, phead, pindex);
+    print_node(phead);
+
+    return 0;
 }

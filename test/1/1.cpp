@@ -9,30 +9,26 @@
 #include <stdint.h>
 #include "1.h"
 
-extern Node* phead;
-extern Node* pindex;
-
-void add(Node** root, int32_t value) {
-    if (*root == NULL) {
-        Node* t = new Node;
-        t->value = value;
-        t->right = NULL;
-        t->left = NULL;
-        *root = t;
-    } else if ((*root)->value > value) {
-        add(&(*root)->left, value);
-    } else if ((*root)->value < value) {
-        add(&(*root)->right, value);
+void add(Node*& root, int32_t value) {
+    if (root == NULL) {
+        root = new Node;
+        root->value = value;
+        root->right = NULL;
+        root->left = NULL;
+    } else if (root->value > value) {
+        add(root->left, value);
+    } else if (root->value < value) {
+        add(root->right, value);
     }
 }
 
-void adjust(Node* root) {
+void adjust(Node* root, Node*& phead, Node*& pindex) {
     if (root == NULL) {
         return;
     }
 
     if (root->left != NULL) {
-        adjust(root->left);
+        adjust(root->left, phead, pindex);
     }
 
     root->left = pindex;
@@ -44,7 +40,7 @@ void adjust(Node* root) {
     }
     pindex = root;
     if (root->right != NULL) {
-        adjust(root->right);
+        adjust(root->right, phead, pindex);
     }
 }
 

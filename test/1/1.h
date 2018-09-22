@@ -5,18 +5,19 @@
     > Created Time: 2018年09月16日 星期日 22时07分19秒
  ************************************************************************/
 
-#ifndef __1_H_
-#define __1_H_
-
 #include <stdint.h>
+
+#ifndef _LEARN_TEST_1_H_
+#define _LEARN_TEST_1_H_
+
 struct Node {
     int32_t value;
     Node* left;
     Node* right;
 };
 
-void add(Node** root, int32_t value);
-void adjust(Node* root);
+void add(Node*& root, int32_t value);
+void adjust(Node* root, Node*& phead, Node*& pindex);
 void print_node(Node* root);
 
 #endif
