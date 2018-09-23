@@ -14,13 +14,14 @@ int main() {
     Node* phead = NULL;
     Node* pindex = NULL;
 
-    add(p, 10);
-    add(p, 6);
-    add(p, 14);
-    add(p, 4);
-    add(p, 8);
-    add(p, 12);
-    add(p, 16);
+    p = add(p, 10);
+    p = add(p, 6);
+    p = add(p, 14);
+    p = add(p, 4);
+    p = add(p, 8);
+    p = add(p, 12);
+    p = add(p, 16);
+    
     adjust(p, phead, pindex);
     print_node(phead);
 

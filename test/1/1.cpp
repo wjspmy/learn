@@ -9,17 +9,18 @@
 #include <stdint.h>
 #include "1.h"
 
-void add(Node*& root, int32_t value) {
+Node* add(Node*& root, int32_t value) {
     if (root == NULL) {
         root = new Node;
         root->value = value;
         root->right = NULL;
         root->left = NULL;
     } else if (root->value > value) {
-        add(root->left, value);
+        root->left = add(root->left, value);
     } else if (root->value < value) {
-        add(root->right, value);
+        root->right = add(root->right, value);
     }
+    return root;
 }
 
 void adjust(Node* root, Node*& phead, Node*& pindex) {

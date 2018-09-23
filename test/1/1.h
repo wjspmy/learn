@@ -16,7 +16,7 @@ struct Node {
     Node* right;
 };
 
-void add(Node*& root, int32_t value);
+Node* add(Node*& root, int32_t value);
 void adjust(Node* root, Node*& phead, Node*& pindex);
 void print_node(Node* root);
 

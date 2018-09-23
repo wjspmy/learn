@@ -1,5 +1,10 @@
-main: main.cpp 1.h 1.cpp
-	g++ -o test main.cpp 1.cpp 1.h
+objects:= $(wildcard *.h *.cpp)
+
+main: $(objects)
+	g++ -o test $(objects)
+
+.PHONY : clean
+
 clean:
-	rm test
+	-rm test 
 
