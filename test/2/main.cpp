@@ -10,14 +10,14 @@
 
 
 int main() {
-	MinStack s;
+	StackMin s;
 	s.push(2);
-    cout<<s.min()<<endl;
+    std::cout << s.stack_min() << std::endl;
     s.push(3);
-    cout<<s.min()<<endl;
+    std::cout << s.stack_min() << std::endl;
     s.push(1);
-    cout<<s.min()<<endl;
+    std::cout << s.stack_min() << std::endl;
     s.pop();
-    cout<<s.min()<<endl;
+    std::cout << s.stack_min() << std::endl;
     return 0;
 }

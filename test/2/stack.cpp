@@ -7,13 +7,14 @@
 
 #include <iostream>
 #include <stdint.h>
+#include "stack.h"
 
-void StackMin::push(int32_t) {
-    m_data.push(value);
+void StackMin::push(int32_t value) {
+    s_data.push(value);
     if (s_min.empty() || s_min.top() >= value) {
         s_min.push(value);
     } else {
-        s_min.push(s_min.top())
+        s_min.push(s_min.top());
     }
 }
 
