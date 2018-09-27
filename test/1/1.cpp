@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include "1.h"
 
-Node* add(Node*& root, int32_t value) {
+Node* add(Node* root, int32_t value) {
     if (root == NULL) {
         root = new Node;
         root->value = value;
