@@ -10,8 +10,8 @@
 
 
 int main() {
-	StackMin s;
-	s.push(2);
+    StackMin s;
+    s.push(2);
     std::cout << s.stack_min() << std::endl;
     s.push(3);
     std::cout << s.stack_min() << std::endl;
