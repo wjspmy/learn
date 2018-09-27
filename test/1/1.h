@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include <stdint.h>
+#include <iostream>
 
 #ifndef _LEARN_TEST_1_1_H_
 #define _LEARN_TEST_1_1_H_
@@ -16,8 +17,13 @@ struct Node {
     Node* right;
 };
 
+
+extern Node* phead;
+extern Node* pindex;
+
+
 Node* add(Node* root, int32_t value);
-void adjust(Node* root, Node*& phead, Node*& pindex);
+void adjust(Node* root);
 void print_node(Node* root);
 
 #endif

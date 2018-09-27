@@ -9,6 +9,9 @@
 #include <stdint.h>
 #include "1.h"
 
+Node* phead = NULL;
+Node* pindex = NULL;
+
 Node* add(Node* root, int32_t value) {
     if (root == NULL) {
         root = new Node;
@@ -23,13 +26,13 @@ Node* add(Node* root, int32_t value) {
     return root;
 }
 
-void adjust(Node* root, Node*& phead, Node*& pindex) {
+void adjust(Node* root) {
     if (root == NULL) {
         return;
     }
 
     if (root->left != NULL) {
-        adjust(root->left, phead, pindex);
+        adjust(root->left);
     }
 
     root->left = pindex;
@@ -41,7 +44,7 @@ void adjust(Node* root, Node*& phead, Node*& pindex) {
     }
     pindex = root;
     if (root->right != NULL) {
-        adjust(root->right, phead, pindex);
+        adjust(root->right);
     }
 }
 

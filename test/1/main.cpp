@@ -11,8 +11,6 @@
 
 int main() {
     Node* p = NULL;
-    Node* phead = NULL;
-    Node* pindex = NULL;
 
     p = add(p, 10);
     p = add(p, 6);
@@ -22,7 +20,7 @@ int main() {
     p = add(p, 12);
     p = add(p, 16);
     
-    adjust(p, phead, pindex);
+    adjust(p);
     print_node(phead);
 
     return 0;
