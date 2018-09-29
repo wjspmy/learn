@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-void HeapAdjust(int32_t* data, int32_t length, int32_t k);
+void HeapAdjust(int32_t* data,int32_t length, int32_t k);
 void HeapSort(int32_t* data, int32_t length);
 
 

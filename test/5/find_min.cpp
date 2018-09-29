@@ -25,7 +25,7 @@ void HeapAdjust(int32_t* data, int32_t length, int32_t k) {
 	data[k] = temp;
 }
 
-void HeapSort(int32_t data[], int32_t length) {
+void HeapSort(int32_t* data, int32_t length) {
 	if (data == NULL || length <= 0) {
 		return;
 	}
