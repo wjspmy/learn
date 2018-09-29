@@ -18,9 +18,9 @@ void HeapAdjust(int32_t* data, int32_t length, int32_t k) {
         if (temp > data[i]) {
             break;
         }
-		data[k] = data[i];
-		k = i;
-		i = 2 * k + 1;
+        data[k] = data[i];
+        k = i;
+        i = 2 * k + 1;
     }
 	data[k] = temp;
 }
