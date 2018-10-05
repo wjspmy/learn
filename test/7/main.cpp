@@ -11,8 +11,8 @@
 using namespace std;
 
 int main() {
-    char* sentence;
-    cin.get(sentence, 50);
+    char* sentence = new char;
+    cin.get(sentence, 500);
     std::cout << "反转前：" << sentence << std::endl;
     sentence = reverse_sentence(sentence);
     std::cout << "反转后：" << sentence << std::endl;
