@@ -22,6 +22,7 @@ int32_t main() {
     
     c.get_push(root);
     c.print_tree();
+    std::cout << std::endl;
     return 0 ;
 
 }

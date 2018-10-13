@@ -9,7 +9,7 @@
 #include "print_tree.h"
 
 Tree* TreeNode::add_tree(Tree* root, int32_t value) {
-    if (root) {
+    if (root == NULL) {
         root = new Tree;
         root->value = value;
         root->left = NULL;
