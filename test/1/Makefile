@@ -1,10 +1,14 @@
 objects:= $(wildcard *.h *.cpp)
 
 main: $(objects)
-	g++ -o test $(objects)
+	g++ $(objects)
+
+gdb : $(objects)
+	g++ -g $(objects)
+
 
 .PHONY : clean
 
 clean:
-	-rm test 
+	-rm *.out
 

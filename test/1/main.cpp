@@ -10,7 +10,7 @@
 
 
 int main() {
-    Node* p = NULL;
+    Node* p;
 
     p = add(p, 10);
     p = add(p, 6);
