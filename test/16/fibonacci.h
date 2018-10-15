@@ -14,5 +14,9 @@
 int32_t fibonacci_1(int32_t n);
 int32_t fibonacci_2(int32_t n);
 
+int32_t** mult(int32_t** m1, int32_t** m2);
+int32_t** recur(int32_t x);
+int32_t fibonacci_3(int32_t n);
+
 
 #endif

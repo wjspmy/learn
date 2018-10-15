@@ -32,12 +32,51 @@ int32_t fibonacci_2(int32_t n) {
     return array[n];
 }
 
-int32_t pow(int32_t *a, int32_t* b) {
+//复杂度为O(logn)
 
+
+int32_t** mult(int32_t** m1, int32_t** m2) {
+    int32_t** res = new int32_t*[2];
+    for (int32_t i = 0; i < 2; ++i) { 
+		res[i] = new int32_t[2];
+	}
+    res[0][0] = m1[0][0] * m2[0][0] + m1[0][1] * m2[1][0];
+    res[0][1] = m1[0][0] * m2[0][1] + m1[0][1] * m2[1][1];
+    res[1][0] = m1[1][0] * m2[0][0] + m1[1][1] * m2[1][0];
+    res[1][1] = m1[1][0] * m2[0][1] + m1[1][1] * m2[1][1];
+
+    return res;
+}
+
+int32_t** recur(int32_t x) {
+    if (x == 0) {
+        int32_t** res = new int32_t*[2];
+        for (int32_t i = 0; i < 2; ++i) {
+			res[i] = new int32_t[2];
+		}
+        res[0][0] = res[1][1] = 1;
+        res[0][1] = res[1][0] = 0;
+        return res;
+    }
+    if (x == 1) {
+        int32_t** res = new int32_t*[2];
+        for (int32_t i = 0; i < 2; ++i) {
+			res[i] = new int32_t[2];
+		}
+        res[0][1] = res[1][0] = res[1][1] = 1;
+        res[0][0] = 0;
+        return res;
+    }
+    int32_t** half = recur(x / 2);
+    return mult(mult(half, half), recur(x % 2));
 }
 
 int32_t fibonacci_3(int32_t n) {
-    int a[2][2] = {{1, 1}, {1, 0}};
-
+    if (n == 0 || n == 1) {
+		return 1;
+	}
+    int32_t** mat = recur(n - 1);
+    return mat[0][1] + mat[1][1];
 }
+
 

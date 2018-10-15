@@ -16,8 +16,11 @@ int32_t main() {
     std::cout << "The fibonacci_1 is "
         << fibonacci_1(n) << std::endl;
 
-    std::cout << "The fibonacci_2 if "
+    std::cout << "The fibonacci_2 is "
         << fibonacci_2(n) << std::endl;
+
+	std::cout << "The fibonacci_3 is " 
+		<< fibonacci_3(n - 1) << std::endl;
 
     
     return 0;
