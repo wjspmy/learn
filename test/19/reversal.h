@@ -17,5 +17,6 @@ struct List {
 
 List* creat();
 void print_list(List* head);
+List* reversal(List* head);
 
 #endif

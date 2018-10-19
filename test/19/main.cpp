@@ -13,6 +13,10 @@ int32_t main() {
     
     print_list(head);
 
+    head = reversal(head);
+
+    print_list(head);
+
 
     return 0;
 }
