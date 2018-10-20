@@ -9,11 +9,15 @@
 #include "queue_by_two_stack.h"
 
 int32_t main() {
-    QueueByStack<int32_t> queue;
+    QueueByStack queue;
     for (int32_t i = 0; i < 10; ++i) {
         queue.push(i);
     }
     std::cout << queue.front() << std::endl;
+    queue.pop();
+    std::cout << queue.front() << std::endl;
 
     return 0;
 }
+
+
