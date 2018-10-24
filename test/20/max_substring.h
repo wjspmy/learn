@@ -9,7 +9,10 @@
 #define _LEASRN_TEST_20_MAX_SUBSTRING_H_
 
 #include <stdint.h>
-#include <string>
+#include <string.h>
+#include <stack>
+
+int32_t max_substring(char* c1, char* c2);
 
 
 #endif

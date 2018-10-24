@@ -9,7 +9,10 @@
 #include "max_substring.h"
 
 int32_t main() {
-  char* a;
-  char* b;
+    char a[] = "ABCBDAB";
+    char b[] = "BDCABA";
+
+    std::cout << max_substring(a, b) << std::endl;
+    return 0;
 
 }
