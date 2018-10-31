@@ -10,5 +10,6 @@
 
 #include <stdint.h>
 
+void reorder(int32_t* a, int32_t n);
 
 #endif

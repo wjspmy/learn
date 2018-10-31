@@ -10,5 +10,20 @@
 
 int32_t main() {
     int32_t n = 0;
-    std::cout << "Plearn"
+    std::cout << "Please input the length of array :";
+    std::cin >> n;
+
+    int32_t a[n] = {0};
+    for (int32_t i = 0; i < n; ++i) {
+        std::cin >> a[i];
+    }
+
+    reorder(a, n);
+
+    for (int32_t i = 0; i < n; ++i) {
+        std::cout << a[i] << ' ';
+    }
+    std::cout << std::endl;
+
+    return 0;
 }
