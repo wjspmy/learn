@@ -18,7 +18,7 @@ int32_t main() {
         std::cin >> a[i];
     }
 
-    reorder(a, n);
+    reorder_2(a, n);
 
     for (int32_t i = 0; i < n; ++i) {
         std::cout << a[i] << ' ';

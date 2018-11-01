@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 
-void reorder(int32_t* a, int32_t n);
+void reorder_1(int32_t* a, int32_t n);
+void reorder_2(int32_t* a, int32_t n);
 
 #endif

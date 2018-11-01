@@ -10,7 +10,9 @@
 
 
 //调整数组顺序使奇数位于偶数前面,时间复杂度为O(n);
-void reorder(int32_t* a, int32_t n) {
+//
+//额外建立两个数组来分别保存奇数和偶数
+void reordea_1(int32_t* a, int32_t n) {
     int32_t b[n] = {0};//偶数
     int32_t c[n] = {0};//奇数
     int32_t b_count = 0;//偶数长度
@@ -29,5 +31,24 @@ void reorder(int32_t* a, int32_t n) {
     }
     for (int32_t i = 0, j = c_count; i < b_count; ++i, ++j) {
         a[j] = b[i];
+    }
+}
+
+
+//直接交换数组中的奇数和偶数
+void reorder_2(int32_t* a, int32_t n) {
+    int32_t start = 0;
+    int32_t end = n - 1;
+
+    while (start < end) {
+        if (a[start] % 2 == 0 && a[end] % 2 == 1) {
+            std::swap(a[start], a[end]);
+        }
+        if (a[start] % 2 == 1) {
+            ++start;
+        }
+        if (a[end] % 2 == 0) {
+            --end;
+        }
     }
 }
