@@ -14,23 +14,27 @@ List* init_list(List* root) {
     return root;
 }
 
-void creat_list(List* p) {
+List* creat_list(List* root) {
 
-    List* root = p;
-    for (int32_t i = 0; i < 10; ++i) {
+    root = new List;
+    root->value = 0;
+    root->next = NULL;
+
+    List* p = root;
+    for (int32_t i = 1; i < 10; ++i) {
         
         List* temp = new List;
         temp->value = i;
         temp->next = NULL;
-        root->next = temp;
-        root = temp;
-        
+        p->next = temp;
+        p = temp;
     }
-
+    return root;
 }
 
 void print_list(List* root) {
-    List* p = root->next;
+    List* p = root;
+    std::cout << "单链表：";
     while (p != NULL) {
         std::cout << p->value << ' ';
         p = p->next;
@@ -38,12 +42,14 @@ void print_list(List* root) {
     std::cout << std::endl;
 }
 
+//用栈实现
 void reversely_1(List* root, std::stack<int32_t> &s) {
-    List* p = root->next;
+    List* p = root;
     while (p != NULL) {
         s.push(p->value);
         p = p->next;
     }
+    std::cout << "方法一：";
     while(!s.empty()) {
         std::cout << s.top() << ' ';
         s.pop();
@@ -51,6 +57,7 @@ void reversely_1(List* root, std::stack<int32_t> &s) {
     std::cout << std::endl;
 }
 
+//递归实现
 void reversely_2(List* root) {
     if (root->next != NULL) {
         reversely_2(root->next);

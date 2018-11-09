@@ -19,7 +19,7 @@ struct List {
 
 
 List* init_list(List* root);
-void creat_list(List* root);
+List* creat_list(List* root);
 void print_list(List* root);
 void reversely_1(List* root, std::stack<int32_t> &s);
 void reversely_2(List* root);

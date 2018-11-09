@@ -9,13 +9,15 @@
 #include "reversely.h"
 
 int32_t main() {
-    List* root = init_list(root);
-    creat_list(root);
+    List* root = NULL;
+    root = creat_list(root);
     print_list(root);
 
     std::stack<int32_t> s;
     reversely_1(root,s);
 
+
+    std::cout << "方法二：";
     reversely_2(root);
     std::cout << std::endl;
 
