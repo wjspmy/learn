@@ -18,7 +18,7 @@ List* creat_node(int32_t value) {
 void connect_node(List* p, List* pnext) {
     assert(p != NULL);
     p->next = pnext;
-}
+} 
 
 void print_list(List* head) {
     List* p = head;

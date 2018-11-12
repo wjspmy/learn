@@ -15,7 +15,7 @@ struct List {
     int32_t value;
     List* next;
 };
-
+ 
 List* creat_node(int32_t value);
 void connect_node(List* p, List* pnext);
 void print_list(List* head);
