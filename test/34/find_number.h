@@ -10,6 +10,8 @@
 
 #include <stdint.h>
 
+int32_t find_bit(int32_t num);
+bool is_bit(int32_t num, int32_t index);
 void find(int32_t* a, int32_t len);
 
 #endif

@@ -8,15 +8,21 @@
 #include <iostream>
 #include "find_number.h"
 
-int FindFirstBitIs1(int num){
-	int indexBit = 0;
+
+//找出数组中只出现一次的2个数字
+int32_t find_bit(int32_t num){
+	int32_t indexBit = 0;
 	while (((num & 1) == 0) && (indexBit < 32)) {
 		num = num >> 1;
-		++ indexBit;
+		++indexBit;
 	}
 	return indexBit;
 }
 
+bool is_bit(int32_t num, int32_t index) {
+    num = num >> index;
+    return (num & 1);
+}
 
 
 void find(int32_t* a, int32_t len) {
@@ -34,23 +40,15 @@ void find(int32_t* a, int32_t len) {
 
     
 
+    int32_t index = find_bit(r);
+    for (int32_t i = 0; i < len; ++i) {
+        if (is_bit(a[i], index)) {
+            n1 ^= a[i];
+        } else {
+            n2 ^= a[i];
+        }
+    }
 
-   int32_t count = 1;
-   while (true) {
-       if ((r & 1) == 1) {
-           break;
-       }
-       r >>= 1;
-       count <<= 1;
-   }
-
-   for (int32_t i = 0; i < len; ++i) {
-       if ((a[i] ^ count) == 0) {
-           n1 ^= a[i];
-       } else {
-           n2 ^= a[i];
-       }
-   }
-   std::cout << n1 << std::endl 
+   std::cout << n1 << " " 
        << n2 << std::endl;
 }
