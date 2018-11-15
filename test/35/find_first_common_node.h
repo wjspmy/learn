@@ -19,5 +19,6 @@ struct List {
 List* creat_node(int32_t value);
 void connect_node(List* p, List* pnext);
 void print_list(List* head);
+void find_first_common_node(List* p1, List* p2);
 
 #endif

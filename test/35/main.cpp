@@ -22,9 +22,16 @@ int32_t main() {
 
     std::cout << "P1 : ";
     print_list(p1);
+
+    List* q = new List;
+    q->value = 0;
+    q->next = p3;
     
-    std::cout << "P3 : ";
-    print_list(p3);
+    std::cout << "q : ";
+    print_list(q);
+
+    std::cout << "p1和q的公共节点：";
+    find_first_common_node(p1, q);
 
     return 0; 
     
