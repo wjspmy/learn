@@ -7,3 +7,32 @@
 
 #include <iostream>
 #include "ugly_num.h"
+
+bool ugly(int32_t num) {
+    while (num % 2 == 0) {
+        num /= 2;
+    }
+    while (num % 3 == 0) {
+        num /= 3;
+    }
+    while (num % 5 == 0) {
+        num /= 5;
+    }
+    return (num == 1) ? true : false;
+}
+
+int32_t solution(int32_t index) {
+    if (index <= 0) {
+        return 0;
+    }
+    int32_t num = 0;
+    int32_t found = 0;
+
+    while (found < index) {
+        ++num;
+        if (ugly(num)) {
+            ++found;
+        }
+    }
+    return num;
+}

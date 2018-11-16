@@ -7,3 +7,13 @@
 
 #include <iostream>
 #include "ugly_num.h"
+
+int32_t main() {
+    int32_t n = 0;
+    std::cout << "Please input the number: ";
+    std::cin >> n;
+
+    std::cout << solution(n) << std::endl;
+    return 0;
+
+}

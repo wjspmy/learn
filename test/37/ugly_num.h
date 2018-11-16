@@ -8,6 +8,9 @@
 #ifndef _LEARN_TEST_37_UGLY_NUM_H_
 #define _LEARN_TEST_37_UGLY_NUM_H_
 
-#include <iostream>
+#include <stdint.h>
+
+bool ugly(int32_t num);
+int32_t solution(int32_t index);
 
 #endif
