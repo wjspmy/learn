@@ -13,6 +13,7 @@ int32_t main() {
     std::cout << "Please input the number: ";
     std::cin >> n;
 
+    std::cout << "第" << n << "个丑数：";
     std::cout << solution(n) << std::endl;
     return 0;
 

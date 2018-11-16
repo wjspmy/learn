@@ -21,6 +21,7 @@ bool ugly(int32_t num) {
     return (num == 1) ? true : false;
 }
 
+//找从1开始的第N个的丑数
 int32_t solution(int32_t index) {
     if (index <= 0) {
         return 0;
