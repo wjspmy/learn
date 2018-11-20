@@ -10,6 +10,10 @@
 
 
 #include <stdint.h>
+#include <cstdio>
+#include <cstring>
+
+const int32_t MAX = 20;
 
 void min_number(int32_t* a, int32_t len);
 

@@ -8,14 +8,29 @@
 #include <iostream>
 #include "min_number.h"
 
+
+//将数组中的数排成最小的数
 void min_number(int32_t* a, int32_t len) {
-    if (a == NULL || len <= 0) {
-        return;
-    }
-    char* s1 = new char[21];
-    char* s2 = new char[21];
-    char** num = (char**)(new int32_t[len]);
+    char** c = (char**)(new int32_t[len]);
     for (int32_t i = 0; i < len; ++i) {
-        num[i] = new char[11];
+        c[i] = new char[MAX];
+        sprintf(c[i], "%d", a[i]);
+    }
+    char* a1 = new char[MAX];
+    char* a2 = new char[MAX];
+
+    
+    strcat(a1, c[0]);
+    strcat(a1, c[1]);
+    strcat(a2, c[1]);
+    strcat(a2, c[0]);
+    
+    //std::cout << a1 << std::endl;
+   // std::cout << a2 << std::endl;
+
+    if(strcmp(a1, a2) < 0) {
+        std::cout << a1 << std::endl;
+    } else {
+        std::cout << a2 << std::endl;
     }
 }

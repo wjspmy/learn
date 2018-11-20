@@ -9,13 +9,14 @@
 #include "min_number.h"
 
 int32_t main() {
-    int32_t len = 0;
-    std::cout << "Please input the length of array: ";
-    std::cin >> len;
-    int32_t a[len];
-    for (int32_t i = 0; i < len; ++i) {
+
+    int32_t a[2];
+
+    for (int32_t i = 0; i < 2; ++i) {
         std::cin >> a[i];
     }
-    min_number(a, len);
+    
+    min_number(a, 2);
+
     return 0;
 }
