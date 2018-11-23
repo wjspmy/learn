@@ -8,6 +8,7 @@
 #include <iostream>
 #include "symmetric.h"
 
+//寻找字符串中最大的对称子串
 //方法一 O(n^3)
 bool is_symmetric(char* begin, char* end) {
     if (begin == NULL || end == NULL
