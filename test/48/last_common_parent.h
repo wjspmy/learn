@@ -10,12 +10,16 @@
 
 #include <stdint.h>
 
-
 struct Tree {
     int32_t data;
-    Tree* next;
+    Tree* left;
+    Tree* right;
 };
 
-Tree* creat();
+Tree* creat(Tree* root);
+void print_1(Tree* root);
+void print_2(Tree* root);
+
+Tree* solution(Tree* root, Tree* p1, Tree* p2);
 
 #endif
