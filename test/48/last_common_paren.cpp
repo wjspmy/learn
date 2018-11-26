@@ -43,6 +43,7 @@ void print_2(Tree* root) {
     }
 }
 
+//求p1,p2的最近的父节点
 Tree* solution(Tree* root, Tree* p1, Tree* p2) {
     if (root == NULL) {
         return NULL;

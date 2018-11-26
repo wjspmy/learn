@@ -26,7 +26,9 @@ int32_t main() {
 
     Tree* parent = solution(root, p1, p2);
 
-    std::cout << parent->data << std::endl;
+
+    std::cout << "p1和p2的父节点为："
+        << parent->data << std::endl;
     
     return 0;
 
