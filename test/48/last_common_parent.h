@@ -9,6 +9,7 @@
 #define _LEARN_TEST_48_LAST_COMMON_PARENT_H_
 
 #include <stdint.h>
+#include <time.h>
 
 struct Tree {
     int32_t data;

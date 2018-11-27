@@ -7,7 +7,9 @@
 
 #include <iostream>
 #include "last_common_parent.h"
+
 int32_t main() {
+    time_t start = clock();
     Tree* root = creat(root);
 
     std::cout << "先序遍历：";
@@ -30,6 +32,12 @@ int32_t main() {
     std::cout << "p1和p2的父节点为："
         << parent->data << std::endl;
     
+    time_t end = clock();
+    long double time = (end - start) ;
+        // CLOCKS_PER_SEC;
+    std::cout << "运行时间：" << time 
+        << '/' << CLOCKS_PER_SEC << std::endl;
+
     return 0;
 
 }
