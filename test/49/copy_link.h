@@ -16,7 +16,12 @@ struct Link {
     Link* sibling;
 };
 
-Link* copy(Link* head, Link* new_head);
+void copy(Link* head, Link* new_head);
+
+void copyt(Link* head, Link* new_head);
+
 void print(Link* head);
+
+void print_sibling(Link* head);
 
 #endif

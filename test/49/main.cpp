@@ -10,13 +10,6 @@
 
 int32_t main() {
     Link* p = new Link[5];
-   /* Link* p2 = new Link;
-    Link* p3 = new Link;
-    Link* p4 = new Link;
-    Link* p5 = new Link;
-
-    p1->value = 'A';
-    */
     
     int32_t i = 0;
     for (; i < 5; ++i) {
@@ -33,11 +26,20 @@ int32_t main() {
     p[4].sibling = NULL;
     Link* head = &p[0];
 
+    std::cout << "head: ";
     print(head);
 
-    Link* new_head = copy(head, new_head);
-    
+    Link* new_head = new Link;
+    copy(head, new_head);
     print(new_head);
+    //std::cout << new_head->value;
+    copyt(head, new_head);
+
+    //std::cout << "new_head: ";
+    //print(new_head);
+    //print_sibling(new_head);
+
+    return 0;
 
    
 }
