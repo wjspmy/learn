@@ -26,30 +26,33 @@ void copy(Link* head, Link* new_head) {
         p = t;
         head = head->next;
     }
+    head = NULL;
 }
 
 void copyt(Link* head,Link* new_head) {
-    //Link* p1 = new Link;
-    Link* p1 = new_head;
-    //Link* q1 = new Link;
-    Link* q1 = head;
-    Link* p2 = new_head;
+    Link* p = new_head;
     
-  
-    while (p1 != NULL) {
+    Link* q = head;
+    
+    while (p != NULL) {
+        Link* t = new_head;
         
-
-        while (p2->value != q1->sibling->value) {
-            p2 = p2->next;
+        while (q->sibling == NULL && q != NULL) {
+            q = q->next;
+            p = p->next;
         }
         
-        p1->sibling = p2;
-        std::cout << p2->value << ' ';
-        p1 = p1->next;
-        p2 = new_head;
-        q1 = q1->next;
-        
+        while (t != NULL && t->value != q->sibling->value) {
+            std::cout << t->value << ' ';
+            t = t->next;
+        }
+        std::cout << std::endl;
+        p->sibling = t;
+
+        p = p->next;
+        q = q->next;
     }
+
     std::cout<< std::endl;
     
 }

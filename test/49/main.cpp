@@ -36,7 +36,6 @@ int32_t main() {
     copyt(head, new_head);
 
     //std::cout << "new_head: ";
-    //print(new_head);
     //print_sibling(new_head);
 
     return 0;
