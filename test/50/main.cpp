@@ -9,6 +9,8 @@
 #include "tree.h"
 
 int32_t main() {
+    clock_t start = clock();
+
     Tree* root1 = NULL;
     std::cout << "root1:";
     creat(root1);
@@ -31,6 +33,11 @@ int32_t main() {
     } else {
         std::cout << "ERROR" << std::endl;
     }
+    clock_t end = clock();
+    double time = end - start;
+    std::cout << "Time : " << time << '/' 
+        << CLOCKS_PER_SEC << 's'
+        << std::endl;
 
     return 0;
 }

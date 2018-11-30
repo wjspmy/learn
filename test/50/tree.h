@@ -9,6 +9,7 @@
 #define _LEARN_TEST_50_TREE_H_
 
 #include <stdint.h>
+#include <time.h>
 
 struct Tree {
     char value;
