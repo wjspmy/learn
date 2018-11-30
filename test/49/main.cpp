@@ -9,6 +9,8 @@
 #include "copy_link.h"
 
 int32_t main() {
+
+    clock_t start = clock();
     Link* p = new Link[5];
     
     int32_t i = 0;
@@ -49,6 +51,12 @@ int32_t main() {
 
     std::cout << "new_head->sibling: ";
     print_sibling(new_head);
+    delete[] p;
+    p = NULL;
+
+    clock_t end = clock();
+    std::cout << "Time: " << end - start << '/'
+        << CLOCKS_PER_SEC << "s\n";
 
     return 0;
 

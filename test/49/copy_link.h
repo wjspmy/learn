@@ -9,7 +9,7 @@
 #define _LEARN_TEST_49_COPY_LINK_H_
 
 #include <stdint.h>
-
+#include <time.h>
 struct Link {
     char value;
     Link* next;
