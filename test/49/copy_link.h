@@ -24,5 +24,6 @@ void print(Link* head);
 
 void print_sibling(Link* head);
 
+void print_address(Link* head);
 
 #endif

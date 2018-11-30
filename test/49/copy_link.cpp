@@ -36,25 +36,31 @@ void copyt(Link* head,Link* new_head) {
     
     while (p != NULL) {
         Link* t = new_head;
+        if (q->next == NULL) {
+           if (q->sibling == NULL) {
+               break;
+           } else {
+               while (t->value != q->sibling->value) {
+                   t = t->next;
+               }
+               p->sibling = t;
+               break;
+           }
+        }
         
-        while (q->sibling == NULL && q != NULL) {
+        while (q->sibling == NULL && q->next != NULL) {
             q = q->next;
             p = p->next;
         }
         
         while (t != NULL && t->value != q->sibling->value) {
-            std::cout << t->value << ' ';
             t = t->next;
         }
-        std::cout << std::endl;
         p->sibling = t;
 
         p = p->next;
         q = q->next;
     }
-
-    std::cout<< std::endl;
-    
 }
 
 void print(Link* head) {
@@ -74,6 +80,15 @@ void print_sibling(Link* head) {
         }
         p = p->next;
 
+    }
+    std::cout << std::endl;
+}
+
+void print_address(Link* head) {
+    Link* p = head;
+    while (p) {
+        std::cout << p << ' ';
+        p = p->next;
     }
     std::cout << std::endl;
 }

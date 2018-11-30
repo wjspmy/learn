@@ -26,17 +26,29 @@ int32_t main() {
     p[4].sibling = NULL;
     Link* head = &p[0];
 
+    std::cout << "head_address:";
+    print_address(head);
+
     std::cout << "head: ";
     print(head);
 
+    std::cout << "head->sibling:";
+    print_sibling(head);
+    std::cout << std::endl;
+
     Link* new_head = new Link;
     copy(head, new_head);
+
+    std::cout << "new_head_address:";
+    print_address(new_head);
+
+    std::cout << "new_head:";
     print(new_head);
-    //std::cout << new_head->value;
+
     copyt(head, new_head);
 
-    //std::cout << "new_head: ";
-    //print_sibling(new_head);
+    std::cout << "new_head->sibling: ";
+    print_sibling(new_head);
 
     return 0;
 
