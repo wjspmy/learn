@@ -9,6 +9,7 @@
 #include "matrix.h"
 
 int32_t main() {
+    clock_t start = clock();
     int32_t size = 0;
     std::cout << "Please input the size of matrix: ";
     std::cin >> size;
@@ -25,6 +26,9 @@ int32_t main() {
     }
     matrix(a, size); 
     std::cout << std::endl;
+    clock_t end = clock();
+    std::cout << "Time: " << end - start << '/'
+        << CLOCKS_PER_SEC << 's' << std::endl;
 
     return 0;
     
