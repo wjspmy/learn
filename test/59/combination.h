@@ -11,6 +11,7 @@
 #include <cstring>
 #include <stdint.h>
 #include <vector>
+#include <time.h>
 
 const int32_t MAX = 10;
 
