@@ -25,7 +25,7 @@ Tree* creat(Tree* root) {
     return p;
 
 }
-
+ 
 void print(Tree* root) {
     if (root) {
         std::cout << root->value << ' ';

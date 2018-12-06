@@ -9,6 +9,7 @@
 #include "tree.h"
 
 int32_t main() {
+    clock_t start = clock();
     Tree* root = creat(root);
 
     print(root);
@@ -31,6 +32,10 @@ int32_t main() {
     } else {
         std::cout << "The tree is not balanced!\n";
     }
+    clock_t end = clock();
+
+    std::cout << "Time: " << end - start << '/'
+        << CLOCKS_PER_SEC << " s\n";
     
     return 0;
 }
