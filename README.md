@@ -1,2 +1,2 @@
 # learn
-learn git
+c++ 学习
