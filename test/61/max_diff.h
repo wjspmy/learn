@@ -9,9 +9,12 @@
 #define _LEARN_TEST_61_MAX_DIFF_H_
 
 #include <stdint.h>
+#include <time.h>
 
 int32_t solution_1(int32_t* a, int32_t len);
+
 int32_t solution_2_1(int32_t* a, int32_t len);
 int32_t solution_2_2(int32_t* start, int32_t* end, int32_t* min, int32_t* max);
 
+int32_t solution_3(int32_t* a, int32_t len);
 #endif

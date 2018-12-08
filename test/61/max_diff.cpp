@@ -58,3 +58,22 @@ int32_t solution_2_2(int32_t* start, int32_t* end, int32_t* min, int32_t* max) {
 
     return max_dif;
 }
+
+//动态规划 O(n);
+int32_t solution_3(int32_t* a, int32_t len) {
+    if (a == NULL && len < 1) {
+        return 0;
+    }
+    int32_t max = a[0];
+    int32_t max_dif = max - a[1];
+    for (int32_t i = 2; i < len; ++i) {
+        if (a[i - 1] > max) {
+            max = a[i - 1];
+        }
+        int32_t current_dif = max - a[i];
+        if (current_dif > max_dif) {
+            max_dif = current_dif;
+        }
+    }
+    return max_dif;
+}
