@@ -14,7 +14,7 @@ void Tally::pmy_login() {
 	char host[] = "localhost";
 	char user[20];
     char psw[20];
-	char table[] = "test";
+	char table[] = "tally";
 	int port = 3306;
     while (strcmp(user, "root") != 0 || strcmp(psw, "123456.+") != 0) {
         std::cout << "请输入用户名：";
@@ -39,26 +39,27 @@ void Tally::pmy_login() {
 
 //插入数据
 void Tally::pmy_insert() {
-    //insert into student(id, name, age, address) values()
-    std::string data = "insert into student(id, name, age, address) values('";
-    std::string id;
-    std::string age;
-    std::string name;
-    std::string address;
-    std::cout << "请输入学号：";
-    std::cin >> id;
-    std::cout << "请输入姓名：";
-    std::cin >> name;
-    std::cout << "请输入年龄：";
-    std::cin >> age;
-    std::cout << "请输入地址：";
-    std::cin >> address;
+    //insert into record(id, name, age, address) values()
+    std::string data = "insert into record(time, people, price, message) values('";
+    std::string time;
+    std::string people;
+    std::string price;
+    std::string message;
+    std::cout << "请输入该条账单产生的时间(XXXX-XX-XX)：";
+    std::cin >> time;
+    std::cout << "请输入产生这笔资金的人：";
+    std::cin >> people;
+    std::cout << "请输入这笔资金的金额：";
+    std::cin >> price;
+    std::cout << "请输入这笔资金的用途：";
+    std::cin >> message;
 
     
-    data += id + "', '";
-    data += name + "', '";
-    data += age + "', '";
-    data += address + "');";
+    data += time + "', '";
+    data += people + "', '";
+    data += price + "', '";
+    data += message + "');";
+    std::cout << data << std::endl;
 
     if (mysql_query(&mysql, data.c_str())) {
         std::cout << "插入失败\n" << mysql_error(&mysql) << std::endl;
@@ -70,7 +71,7 @@ void Tally::pmy_insert() {
 
 //查询数据
 void Tally::pmy_select() {
-    std::string data = "select * from student;";
+    std::string data = "select * from record;";
     if (mysql_query(&mysql, data.c_str())) {
         std::cout << "查询失败!\n " << mysql_error(&mysql) << std::endl;
         return;
@@ -104,13 +105,15 @@ void Tally::pmy_select() {
 
 }
 
-//删除一条记录
+
+
+//删除数据
 void Tally::pmy_delete() {
-    std::string id;
-    std::cout << "请输入您要删除的学生学号：";
-    std::cin >> id;
-    std::string data = "delete from student where id = '";
-    data += id + "';";
+    std::string time;
+    std::cout << "请输入您要删除账单的时间(XXXX-XX-XX)：";
+    std::cin >> time;
+    std::string data = "delete from record where time = '";
+    data += time + "';";
     std::cout << data << std::endl;
     if (mysql_query(&mysql, data.c_str())) {
         std::cout << "删除失败！\n" << mysql_error(&mysql) << std::endl;

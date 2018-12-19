@@ -19,7 +19,8 @@ public :
     void pmy_insert();//数据库的插入操作
     void pmy_select();//数据库的查询操作
     void pmy_delete();//数据库的删除操作
-    void pmy_quit();
+    void pmy_updata();//数据库的修改操作
+    void pmy_quit();//退出数据库以及程序
 private :
     MYSQL mysql;
     MYSQL_ROW row;
