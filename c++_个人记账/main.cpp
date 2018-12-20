@@ -1,7 +1,7 @@
 /*************************************************************************
     > File Name: main.cpp
-    > Author: 潘梦园
-    > brief:  
+    > Author: wjspmy
+    > brief:  c++_记账
     > Created Time: 2018年12月19日 星期三 22时13分59秒
  ************************************************************************/
 
@@ -30,7 +30,7 @@ int main() {
                             case 1: tally.pmy_insert(); break;
                             case 2: tally.pmy_select(); break;
                             case 3: tally.pmy_delete(); break;
-                            case 4: std::cout << "还没有完成！！！\n"; break;
+                            case 4: tally.pmy_update(); break;
                             case 5: tally.pmy_quit(); break;
                             default: std::cout << "操作选择错误!!\n";
                          }

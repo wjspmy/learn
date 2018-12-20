@@ -1,7 +1,7 @@
 /*************************************************************************
     > File Name: tally.cpp
-    > Author: 潘梦园
-    > brief:  
+    > Author: wjspmy
+    > brief:  c++_个人记账
     > Created Time: 2018年12月19日 星期三 22时13分59秒
  ************************************************************************/
 
@@ -59,49 +59,94 @@ void Tally::pmy_insert() {
     data += people + "', '";
     data += price + "', '";
     data += message + "');";
-    std::cout << data << std::endl;
 
     if (mysql_query(&mysql, data.c_str())) {
-        std::cout << "插入失败\n" << mysql_error(&mysql) << std::endl;
+        std::cout << "账单记录失败\n" << mysql_error(&mysql) << std::endl;
     } else{
-        std::cout << "插入成功\n"; 
+        std::cout << "账单记录成功\n\n"; 
     }
 
 }
 
 //查询数据
 void Tally::pmy_select() {
-    std::string data = "select * from record;";
-    if (mysql_query(&mysql, data.c_str())) {
-        std::cout << "查询失败!\n " << mysql_error(&mysql) << std::endl;
-        return;
-    } else {
-        std::cout << "查询成功! " << std::endl; 
-    }
-
-    result = mysql_store_result(&mysql);
-   
-    int row_num = mysql_num_rows(result);
-    //std::cout << "All data number : " << row_num << std::endl;
     
-    int field_num = mysql_num_fields(result);
-    //std::cout << "Field number : " << field_num << std::endl;
+    menu_3();
+    std::cout << "请输入您的操作: ";
+    int choose = 0;
+    std::cin >> choose;
+    while (choose) {
+    std::string data = "select * from record ";
+        std::string select;//代表要查询的表字段
+        switch(choose) {
+            case 1: 
+                data += "where time >= '";
+    
+                std::cout << "请输入起始时间(XXXX-XX-XX): ";
+                std::cin >> select;
+                data += select + "' and time <= '";
+                std::cout << "请输入结束时间(XXXX-XX-XX): ";
+                std::cin >> select;
+                data += select + "' ";
+                break;
+            case 2:
+                data += "where people = '";
+                
+                std::cout << "请输入要查询的人: ";
+                std::cin >> select;
+                data += select + "' ";
+                break;
+            case 3:
+                break;
+            case 4:
+                return;
+            default:
+                std::cout << "输入的操作错误!!\n";
+        }
+    
+        data += "order by time desc;";
+        //std::cout << data << std::endl;
 
-    for (int i = 0; i < field_num; ++i) {
-        field = mysql_fetch_field_direct(result, i);
-        std::cout << field->name << '\t';
-    }
-    std::cout << std::endl;
 
-    row = mysql_fetch_row(result);
-    while (row != NULL) {
+        if (mysql_query(&mysql, data.c_str())) {
+            std::cout << "账单查询失败,请检查输入是否合格!\n\n ";
+            return;
+        }
+
+        result = mysql_store_result(&mysql);
+   
+        int row_num = mysql_num_rows(result);//获取表中所有符合条件的记录的条数
+        //std::cout << "All data number : " << row_num << std::endl;
+    
+        int field_num = mysql_num_fields(result);//获取表中所有字段的个数
+        //std::cout << "Field number : " << field_num << std::endl;
+
+        std::cout << "    时间\t\t人\t\t金额\t\t说明\n";
+
+        /*
+         * 这段代码是获取数据库中表的字段名
         for (int i = 0; i < field_num; ++i) {
-            std::cout << row[i] << '\t';
+            field = mysql_fetch_field_direct(result, i);
+            std::cout << field->name << '\t';
         }
         std::cout << std::endl;
+        */
+
         row = mysql_fetch_row(result);
+        while (row != NULL) {
+            for (int i = 0; i < field_num; ++i) {
+                std::cout << row[i] << "\t\t";
+            }
+            std::cout << std::endl;
+            row = mysql_fetch_row(result);
+        }
+        mysql_free_result(result);
+
+
+        menu_3();
+        std::cout << "请输入您的操作：";
+        std::cin >> choose;
     }
-    mysql_free_result(result);
 
 }
 
@@ -110,16 +155,94 @@ void Tally::pmy_select() {
 //删除数据
 void Tally::pmy_delete() {
     std::string time;
+    std::string people;
+    std::string price;
+    std::string message;
     std::cout << "请输入您要删除账单的时间(XXXX-XX-XX)：";
     std::cin >> time;
+    std::cout << "请输入您要删除账单的所属人：";
+    std::cin >> people;
+    std::cout << "请输入您要删除账单的金额：";
+    std::cin >> price;
+    std::cout << "请输入您要删除账单的用途：";
+    std::cin >> message;
+
     std::string data = "delete from record where time = '";
-    data += time + "';";
-    std::cout << data << std::endl;
+    data += time + "' and people = '";
+    data += people + "' and price = '";
+    data += price + "' and message = '";
+    data += message + "';";
+    
     if (mysql_query(&mysql, data.c_str())) {
-        std::cout << "删除失败！\n" << mysql_error(&mysql) << std::endl;
-        return;
+        std::cout << "账单删除失败！\n" << mysql_error(&mysql) << std::endl;
+        return;;
+
     } else {
-        std::cout << "删除成功！\n";
+        std::cout << "账单删除成功！\n";
+    }
+}
+void Tally::pmy_update() {
+    std::string old_time;
+    std::string old_people;
+    std::string old_price;
+    std::string old_message;
+    std::cout << "请输入您要修改的记录的信息：\n";
+    std::cout << "时间：";
+    std::cin >> old_time;
+    std::cout << "人：";
+    std::cin >> old_people;
+    std::cout << "金额：";
+    std::cin >> old_price;
+    std::cout << "账单说明：";
+    std::cin >> old_message;
+
+    menu_4();
+    std::cout << "请选择您的操作: ";
+    int choose = 0;
+    
+    std::cin >> choose;
+    while (choose) {
+        std::string data = "update record set ";
+        std::string update;
+       
+        switch (choose) {
+            case 1:
+                std::cout << "请输入新的时间：";
+                std::cin >> update;
+                data += "time = '";
+                break;
+            case 2:
+                std::cout << "请输入新的所属人：";
+                std::cin >> update;
+                data += "people = '";
+                break;
+            case 3:
+                std::cout << "请输入新的账单价格：";
+                std::cin >> update;
+                data += "price = '";
+                break;
+            case 4:
+                std::cout << "请输入新的账单说明：";
+                std::cin >> update;
+                data += "message = '";
+                break;
+            case 5:
+                return;
+            default: std::cout << "输入的操作错误！\n";
+        }
+        data += update + "' where time = '" + old_time + "' and ";
+        data += "people = '" + old_people + "' and ";
+        data += "price = '" + old_price + "' and ";
+        data += "message = '" + old_message + "';";
+        if (mysql_query(&mysql, data.c_str())) {
+            std::cout << "账单修改失败\n" << mysql_error(&mysql) << std::endl;
+        } else {
+            std::cout << "账单修改成功\n\n";
+        }
+        menu_4();
+        std::cout << "请输入您选择的操作：";
+        std::cin >> choose;
+
     }
 }
 
