@@ -25,15 +25,12 @@ void Tally::pmy_login() {
         system("stty echo");
         std::cout << std::endl;
         if (strcmp(user, "root") != 0 || strcmp(psw, "123456.+") != 0) {
-            std::cout << "用户名或密码错误!\n";
+            std::cout << "用户名或密码错误!\n\n";
         }
-        
     }
 	if (!(mysql_real_connect(&mysql, host, user, psw, table, port, NULL, 0)) ){
         //中间分别是主机，用户名，密码，数据库名，端口号（可以写默认0或者3306等），可以先写成参数再传进去
-	    std::cout << "数据库连接错误!\n" <<  mysql_error(&mysql) << std::endl;
-	} else {
-        std::cout << "数据库连接成功!\n";
+	    std::cout << "数据库连接错误!\n\n" <<  mysql_error(&mysql) << std::endl;
 	}
 }
 
@@ -61,9 +58,9 @@ void Tally::pmy_insert() {
     data += message + "');";
 
     if (mysql_query(&mysql, data.c_str())) {
-        std::cout << "账单记录失败\n" << mysql_error(&mysql) << std::endl;
+        std::cout << "\n账单记录失败,请检查输入是否正确!\n" <<std::endl;
     } else{
-        std::cout << "账单记录成功\n\n"; 
+        std::cout << "\n账单记录成功\n\n\n"; 
     }
 
 }
@@ -72,14 +69,24 @@ void Tally::pmy_insert() {
 void Tally::pmy_select() {
     
     menu_3();
-    std::cout << "请输入您的操作: ";
+    std::cout << "请选择您的操作: ";
     int choose = 0;
+    int sign = 1;
     std::cin >> choose;
     while (choose) {
-    std::string data = "select * from record ";
+
+        if (sign == 0) {
+            std::cout << "请选择您的操作：";
+            std::cin >> choose;
+        }
+        
+        std::cout << "\n\n";
+        std::string data = "select * from record ";
         std::string select;//代表要查询的表字段
         switch(choose) {
             case 1: 
+                sign = 1;
+
                 data += "where time >= '";
     
                 std::cout << "请输入起始时间(XXXX-XX-XX): ";
@@ -90,6 +97,8 @@ void Tally::pmy_select() {
                 data += select + "' ";
                 break;
             case 2:
+                sign = 1;
+
                 data += "where people = '";
                 
                 std::cout << "请输入要查询的人: ";
@@ -97,11 +106,20 @@ void Tally::pmy_select() {
                 data += select + "' ";
                 break;
             case 3:
+                sign = 1;
+
                 break;
             case 4:
+                sign = 1;
+
                 return;
             default:
+                sign = 0;
                 std::cout << "输入的操作错误!!\n";
+                
+        }
+        if (sign == 0) {
+            continue;
         }
     
         data += "order by time desc;";
@@ -121,7 +139,15 @@ void Tally::pmy_select() {
         int field_num = mysql_num_fields(result);//获取表中所有字段的个数
         //std::cout << "Field number : " << field_num << std::endl;
 
-        std::cout << "    时间\t\t人\t\t金额\t\t说明\n";
+
+
+        std::cout << "\n\n";
+        std::cout << "\t\t\t -----------------------------------------------------------------\n";
+        std::cout << "\t\t\t                          个人记账系统                            \n";
+        std::cout << "\t\t\t -----------------------------------------------------------------\n";
+        std::cout << "\t\t\t                                                                  \n";
+        std::cout << "\t\t\t    时  间         人       金  额   说  明                       \n";
+        std::cout << "\t\t\t                                                                  \n";
 
         /*
          * 这段代码是获取数据库中表的字段名
@@ -134,15 +160,20 @@ void Tally::pmy_select() {
 
         row = mysql_fetch_row(result);
         while (row != NULL) {
+            std::cout << "\t\t\t  ";
             for (int i = 0; i < field_num; ++i) {
-                std::cout << row[i] << "\t\t";
+                
+                std::cout << row[i] << "      ";
             }
             std::cout << std::endl;
             row = mysql_fetch_row(result);
         }
+
+        std::cout << std::endl;
+        std::cout << "\t\t\t ----------------------------------------------------------------- \n";
         mysql_free_result(result);
 
-
+        std::cout << "\n\n\n\n\n\n";
         menu_3();
         std::cout << "请输入您的操作：";
         std::cin >> choose;
@@ -178,8 +209,9 @@ void Tally::pmy_delete() {
         return;;
 
     } else {
-        std::cout << "账单删除成功！\n";
+        std::cout << "账单删除成功！\n\n\n\n\n\n";
     }
+    
 }
 void Tally::pmy_update() {
     std::string old_time;
@@ -202,6 +234,9 @@ void Tally::pmy_update() {
     
     std::cin >> choose;
     while (choose) {
+
+        std::cout << "\n\n";
+
         std::string data = "update record set ";
         std::string update;
        
@@ -237,8 +272,9 @@ void Tally::pmy_update() {
         if (mysql_query(&mysql, data.c_str())) {
             std::cout << "账单修改失败\n" << mysql_error(&mysql) << std::endl;
         } else {
-            std::cout << "账单修改成功\n\n";
+            std::cout << "账单修改成功\n\n\n\n\n\n";
         }
+
         menu_4();
         std::cout << "请输入您选择的操作：";
         std::cin >> choose;
