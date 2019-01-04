@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "login.h"
 #include "ui_menu.h"
 
 menu::menu(QWidget *parent) :
@@ -6,6 +6,8 @@ menu::menu(QWidget *parent) :
     ui(new Ui::menu)
 {
     ui->setupUi(this);
+    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);    // 禁止最大化按钮
+    setFixedSize(this->width(),this->height());                     // 禁止拖动窗口大小
 }
 
 menu::~menu()
@@ -16,34 +18,51 @@ menu::~menu()
 void menu::on_btn_5_clicked()
 {
     this->close();
-
 }
 
 void menu::on_btn_1_clicked()
 {
-    //暂时未作
+    QString year = ui->year->currentText();
+    QString month = ui->month->currentText();
+    QString day = ui->day->currentText();
 
+    model = new QSqlTableModel(this);
+    model->setTable("record");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+    model->setFilter(QString("time= '%1-%2-%3' and name = '%4'").arg(year) .arg(month) .arg(day) .arg(name));//根据登陆用户的用户名来查询账单
+
+    model->setSort(1,Qt::DescendingOrder); //排序方式为降序
+
+    model->select();//显示结果
+
+    //model->removeColumn(0);//不显示name属性列,如果这时添加记录，则该属性的值添加不上
+
+    ui->tableView->setModel(model);
+    model->setHeaderData(0, Qt::Horizontal, tr("姓名"));//将name修改为姓名
+    model->setHeaderData(1, Qt::Horizontal, tr("时间"));
+    model->setHeaderData(2, Qt::Horizontal, tr("金额"));
+    model->setHeaderData(3, Qt::Horizontal, tr("说明"));
 }
+
 void menu::on_btn_6_clicked()
 {
     model = new QSqlTableModel(this);
     model->setTable("record");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 
-    QString name = "潘梦园";
-    //根据姓名进行筛选
-    model->setFilter(QString("name = '%1'").arg(name));
-    //显示结果
-    model->select();
+    model->setFilter(QString("name = '%1'").arg(name));//根据登陆用户的用户名来查询账单
+    model->setSort(1,Qt::DescendingOrder); //排序方式为降序
 
-    //不显示name属性列,如果这时添加记录，则该属性的值添加不上
-    // model->removeColumn(1);
+    model->select();//显示结果
+
+    //model->removeColumn(0);//不显示name属性列,如果这时添加记录，则该属性的值添加不上
+    model->setHeaderData(0, Qt::Horizontal, tr("姓名"));//将name修改为姓名
+    model->setHeaderData(1, Qt::Horizontal, tr("时间"));
+    model->setHeaderData(2, Qt::Horizontal, tr("金额"));
+    model->setHeaderData(3, Qt::Horizontal, tr("说明"));
 
     ui->tableView->setModel(model);
-
-    //使其不可编辑
-    // ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
 }
 
 

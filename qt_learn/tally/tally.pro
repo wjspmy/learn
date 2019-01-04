@@ -29,8 +29,7 @@ SOURCES += \
     menu.cpp
 
 HEADERS += \
-        login.h \
-    menu.h
+        login.h
 
 FORMS += \
         login.ui \

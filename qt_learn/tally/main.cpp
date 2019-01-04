@@ -16,10 +16,8 @@ int main(int argc, char *argv[])
     }
 
     login w;
+    w.setWindowTitle("小潘记账系统");
     w.show();
-    menu m;
-    m.setname(w.getname());
-    m.getname();
 
     return a.exec();
 }
